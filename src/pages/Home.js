@@ -4,10 +4,10 @@ import Search from "../assets/search.svg";
 import Currency from "../assets/currency-dollar.svg";
 import React, { useState } from "react";
 import SearchScreen from "./Search";
-import { useMusic } from "../modules/music/hook";
+import { STATUS, useMusic } from "../modules/music/hook";
 import Card from "../components/card";
 
-function Home({ props: { searchParams, data, fetchMusic } }) {
+function Home({ props: { status, searchParams, data, fetchMusic } }) {
   const [openSearch, setOpenSearch] = useState(false);
 
   return (
@@ -37,16 +37,21 @@ function Home({ props: { searchParams, data, fetchMusic } }) {
         </section>
 
         <section className="result-container">
-          {data?.results?.map((elm, i) => (
-            <Card
-              key={i}
-              img={elm.artworkUrl100}
-              artistName={elm.artistName}
-              primaryGenreName={elm.primaryGenreName}
-              collectionPrice={elm.collectionPrice}
-              trackCensoredName={elm.trackCensoredName}
-            />
-          ))}
+          {status === STATUS.loading ? (
+            <div className="loading">Loading...</div>
+          ) : (
+            data?.results?.map((elm, i) => (
+              <Card
+                key={i}
+                img={elm.artworkUrl100}
+                artistName={elm.artistName}
+                primaryGenreName={elm.primaryGenreName}
+                collectionPrice={elm.collectionPrice}
+                trackCensoredName={elm.trackCensoredName}
+                src={elm?.previewUrl}
+              />
+            ))
+          )}
 
           <div className="load-more">
             <button

@@ -132,7 +132,11 @@ header {
   letter-spacing: 0.64px;
   color: var(--purple);
 }
-
+.loading {
+  color: var(--purple);
+  text-align: center;
+  margin-bottom: 20px;
+}
 .result-container {
   margin: 30px 15px 0 15px;
 }
@@ -180,10 +184,11 @@ header {
 .card {
   display: flex;
   flex-direction: column;
+  width: auto;
 }
 
 .card-body {
-  height: 90px;
+  height: 80px;
 }
 .card-body .card-title {
   min-height: 11px;
@@ -210,6 +215,7 @@ header {
   display: flex;
   justify-content: space-between;
   height: 20px;
+  width: 100%;
 }
 
 .card .card-footer .badge {
@@ -296,6 +302,7 @@ header {
   color: #fff;
   margin-bottom: 31px;
 }
+
 input {
   height: 40px;
   width: 100%;

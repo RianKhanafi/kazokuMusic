@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchingMusic } from "./api";
 
-const STATUS = {
+export const STATUS = {
   idle: "idle",
   loading: "loading",
   error: "error",
@@ -10,7 +10,9 @@ const STATUS = {
 const useMusic = () => {
   const [status, setStatus] = useState("idle"); //idle, loading, error
   const [data, setData] = useState([]);
-  const [searchParams, setSearchParams] = useState({ search: "" });
+  const [searchParams, setSearchParams] = useState({
+    search: "",
+  });
 
   const fetchMusic = async (params) => {
     if (params?.search) setSearchParams(params);
@@ -21,15 +23,9 @@ const useMusic = () => {
       const result = await fetchingMusic({
         search: search?.replaceAll(" ", "+"),
       });
-      setStatus(STATUS.loading);
+      setStatus(STATUS.idle);
 
       if (result.status === 200) {
-        // if (params?.loadMore) {
-        //   const curr = [...data];
-        //   curr?.push(result.data);
-        //   setData(curr);
-        // } else
-
         setData(result.data);
       }
     } catch (err) {
