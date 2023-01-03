@@ -22,7 +22,7 @@ const Card = ({
         <div className="play">
           <img src={Play} width={32} height={32} alt="play" />
         </div>
-        <img src={img} alt="play" />
+        <img src={img} alt="play" className="img-thumbnail" />
         <div>
           <audio ref={audioRef} controls>
             <source src={src} type="audio/mpeg" />
